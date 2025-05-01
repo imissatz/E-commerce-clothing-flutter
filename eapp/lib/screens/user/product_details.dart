@@ -1,5 +1,7 @@
 import 'package:eapp/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 
 class ProductDetails extends StatelessWidget {
   final Product product;
@@ -8,6 +10,7 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedPrice = NumberFormat('#,###').format(product.price);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Details'),
@@ -42,12 +45,16 @@ class ProductDetails extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                    children:  [
-                     Text('Product Name: ${product.name}'),
-                     Text('Product Price: ${product.price}'),
+
+                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [Text("${product.name}".toUpperCase(), style: const TextStyle(fontSize: 20.0),),
+                                Text('TZS ${formattedPrice.toString()}', style: const TextStyle(fontSize: 20.0),)]
+                                ),
                      Text('Product Description: ${product.description}'),
                             
                     const SizedBox(
-                    height: 100
+                    height: 20
                      ),
                             
                 Row(
@@ -76,13 +83,39 @@ class ProductDetails extends StatelessWidget {
                     ),
                   ),
                 ],
-                            ),
+                ),
+
                             
                   ],),
               ),
               
             ),
-        
+            const SizedBox(height: 10.0),
+
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurpleAccent,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Product Feedback',
+                        style: TextStyle(fontSize: 16.0, 
+                                         fontWeight: FontWeight.bold)), 
+                        SizedBox(height: 10.0,),
+                        Card(
+                          child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Column(),),)
+                      ],
+                    ),),
+
+                    
+                )
            
           ],
         ),

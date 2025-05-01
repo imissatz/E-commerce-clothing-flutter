@@ -109,8 +109,8 @@ class _HomePageState extends State<HomePage> {
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // 2 items per row
-                mainAxisSpacing: 10.0, // Vertical spacing
-                crossAxisSpacing: 10.0, // Horizontal spacing
+                mainAxisSpacing: 0.0, // Vertical spacing
+                crossAxisSpacing: 0.0, // Horizontal spacing
                 childAspectRatio: 0.75, // Controls the Shape of the product container
               ),
             
