@@ -1,5 +1,6 @@
 import 'package:eapp/models/product.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 
@@ -19,6 +20,7 @@ class ProductDetails extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 350.0,
@@ -92,6 +94,7 @@ class ProductDetails extends StatelessWidget {
             ),
             const SizedBox(height: 10.0),
 
+            //Product feedback
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -110,15 +113,65 @@ class ProductDetails extends StatelessWidget {
                         Card(
                           child: Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Column(),),)
-                      ],
-                    ),),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
 
-                    
-                )
+                              // User Profile Picture
+                              Row(
+                                children: [
+                                  Text("Profile Picture"),
+                                  SizedBox(width: 10.0,),
+                                  Text ('Username', 
+                                  style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Spacer(),
+                                  Text('2d ago', style: TextStyle(color: Colors.grey)),
+                                ],
+                              ),
+
+                               Text('★ ★ ★ ★ ☆', style:TextStyle(fontSize: 13.0, 
+                               fontWeight: FontWeight.w100,
+                               color: Colors.amber),),
+                              Text('Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.'),
+                              SizedBox(height: 8.0,),
+
+                              // Like and Comment Count
+                              Row(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.thumb_up, color: Colors.blue,),
+                                      SizedBox(width: 5.0,),
+                                      Text('12')
+                                    ],
+                                  ),
+                                  SizedBox(width: 10.0,),
+                                  Icon(Icons.comment, color: Colors.grey),
+                                ], 
+                              ),
+                              Text('Comment Count')
+
+                            ],
+                          ),),)
+                      ],
+                    ),),                    
+                ),
+                const SizedBox(height: 10.0),
+
+                // Similar Products
+                const Text('Similar Products'),
+                const SizedBox(height: 5.0,),
+
+                const Column(
+                  children: [
+                    Text('Product 1'),
+                    Text('Product 2'),
+                  ],)
+
            
           ],
         ),
+
       )
     );
   }
