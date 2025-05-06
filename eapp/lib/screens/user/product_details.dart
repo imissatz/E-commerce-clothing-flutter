@@ -120,7 +120,10 @@ class ProductDetails extends StatelessWidget {
                               // User Profile Picture
                               Row(
                                 children: [
-                                  Text("Profile Picture"),
+                                  CircleAvatar(
+                                    backgroundImage: AssetImage('assets/nopfp.jpg'),
+                                    radius: 18,
+                                  ),
                                   SizedBox(width: 10.0,),
                                   Text ('Username', 
                                   style: TextStyle(fontWeight: FontWeight.bold),),
