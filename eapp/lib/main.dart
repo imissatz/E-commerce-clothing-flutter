@@ -1,4 +1,5 @@
 import 'package:eapp/models/product.dart';
+import 'package:eapp/screens/user/cart.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/user/splash_screen.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
 
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
-        // '/product_details': (context) => const ProductDetails(),
+        '/cart': (context) => const Cart(),
         '/admin/dashboard': (context) => const Dashboard(),
         '/admin/products': (context) => const Products(),
         '/admin/orders': (context) => const Order(),

@@ -77,7 +77,9 @@ class ProductDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/cart', arguments: product);
+                      },
                       icon: const Icon(
                         Icons.shopping_cart
                       ),

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:eapp/models/product.dart';
 import 'package:eapp/server_handler.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
           SliverAppBar(
               backgroundColor: Colors.deepPurple,
               pinned: true,
-              expandedHeight: 300.0,
+              expandedHeight: 180.0,
               flexibleSpace: FlexibleSpaceBar(
                 background: Column(
                   children: [
@@ -83,21 +85,20 @@ class _HomePageState extends State<HomePage> {
                             
           ),
           
-        SliverToBoxAdapter(
-          child: Column(
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _StickyHeaderDelegate(
+               child: const Column(
           children:[
             // Categories
             SizedBox(
-              height: 45.0,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 20, 
-                itemBuilder: (context, index){
-                return const Categories();
-              }),
+              height: 30.0,
+              child: Categories(),
             ),
           ],
-        ),),
+        ),
+          ),
+       ),
 
         // Products
          SliverGrid(
@@ -122,4 +123,28 @@ class _HomePageState extends State<HomePage> {
   }
   );
   }
+}
+
+
+class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate{
+  final Widget child;
+
+  _StickyHeaderDelegate({required this.child});
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent){
+    return child;
+  }
+
+  @override
+  double get maxExtent => 30.0;
+
+  @override
+  double get minExtent => 30.0;
+
+  @override
+  bool shouldRebuild(_StickyHeaderDelegate oldDelegate){
+    return child != oldDelegate.child;
+  }
+
 }
