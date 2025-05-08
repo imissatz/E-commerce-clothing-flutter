@@ -14,7 +14,7 @@ import 'screens/admin/order.dart';
 import 'screens/admin/users.dart';
 
 void main() {
-   runApp(
+  runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
@@ -22,9 +22,8 @@ void main() {
       ],
       child: const MyApp(),
     ),
-    );
-   }
-
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,41 +31,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Furaha Centre',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-    
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-        useMaterial3: true,
-      ),
-      initialRoute: '/',
-      routes: {
-
-        '/': (context) => const SplashScreen(),
-        '/home': (context) => const HomePage(),
-        // '/cart': (context) =>  Cart(),
-        '/admin/dashboard': (context) => const Dashboard(),
-        '/admin/products': (context) => const Products(),
-        '/admin/orders': (context) => const Order(),
-        '/admin/users': (context) => const Users(),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == '/product_details') {
-          final product = settings.arguments as Product;
-          return MaterialPageRoute(
-            builder: (context) => ProductDetails(product: product),
-          );
-        } 
-        // else if (settings.name == '/cart') {
-        //   final product = settings.arguments as Product;
-        //   return MaterialPageRoute(
-        //     builder: (context) => Cart(product: product),
-        //   );
-        // }
-        return null; // Return null if no matching route is found
-      }
-
-    );
+        title: 'Furaha Centre',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+          useMaterial3: true,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const SplashScreen(),
+          '/home': (context) => const HomePage(),
+          // '/cart': (context) =>  Cart(),
+          '/admin/dashboard': (context) => const Dashboard(),
+          '/admin/products': (context) => const Products(),
+          '/admin/orders': (context) => const Order(),
+          '/admin/users': (context) => const Users(),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name == '/product_details') {
+            final product = settings.arguments as Product;
+            return MaterialPageRoute(
+              builder: (context) => ProductDetails(product: product),
+            );
+          }
+          // else if (settings.name == '/cart') {
+          //   final product = settings.arguments as Product;
+          //   return MaterialPageRoute(
+          //     builder: (context) => Cart(product: product),
+          //   );
+          // }
+          return null; // Return null if no matching route is found
+        });
   }
 }
-
