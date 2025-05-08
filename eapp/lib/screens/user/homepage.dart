@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element
 
 import 'package:eapp/models/product.dart';
+import 'package:eapp/screens/user/cart.dart';
 import 'package:eapp/server_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:eapp/widget/container.dart';
@@ -118,12 +119,23 @@ class _HomePageState extends State<HomePage> {
             ),
           ]                  
       ),
+
+  floatingActionButton: FloatingActionButton(
+    backgroundColor: Colors.deepPurple,
+    child: const Icon(Icons.shopping_cart),
+    onPressed: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart())); 
+    },
+  )
         
     );
   }
   );
   }
+
+  
 }
+
 
 
 class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate{

@@ -1,6 +1,8 @@
 import 'package:eapp/models/product.dart';
-import 'package:eapp/screens/user/cart.dart';
+// import 'package:eapp/screens/user/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:eapp/models/cartProvider.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/user/splash_screen.dart';
 import 'screens/user/homepage.dart';
@@ -11,7 +13,17 @@ import 'screens/admin/products.dart';
 import 'screens/admin/order.dart';
 import 'screens/admin/users.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+   runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        // Add other providers here if needed
+      ],
+      child: const MyApp(),
+    ),
+    );
+   }
 
 
 class MyApp extends StatelessWidget {
@@ -32,21 +44,27 @@ class MyApp extends StatelessWidget {
 
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
-        '/cart': (context) => const Cart(),
+        // '/cart': (context) =>  Cart(),
         '/admin/dashboard': (context) => const Dashboard(),
         '/admin/products': (context) => const Products(),
         '/admin/orders': (context) => const Order(),
         '/admin/users': (context) => const Users(),
       },
-      onGenerateRoute: (settings){
-          if(settings.name == '/product_details'){
-            final product = settings.arguments as Product;
-            return MaterialPageRoute(
-              builder: (context) => ProductDetails(product: product),
-            );
-          }
-          return null; // Return null if no matching route is found
-        }
+      onGenerateRoute: (settings) {
+        if (settings.name == '/product_details') {
+          final product = settings.arguments as Product;
+          return MaterialPageRoute(
+            builder: (context) => ProductDetails(product: product),
+          );
+        } 
+        // else if (settings.name == '/cart') {
+        //   final product = settings.arguments as Product;
+        //   return MaterialPageRoute(
+        //     builder: (context) => Cart(product: product),
+        //   );
+        // }
+        return null; // Return null if no matching route is found
+      }
 
     );
   }
