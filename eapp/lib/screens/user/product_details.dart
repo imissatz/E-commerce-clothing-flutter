@@ -17,25 +17,29 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final formattedPrice = NumberFormat('#,###').format(product.price);
     return Scaffold(
+      backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
         title: const Text('Product Details'),
+        backgroundColor: Colors.deepPurple,
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 350.0,
+              height: 250.0,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
+                // borderRadius: BorderRadius.circular(10.0),
                 child: Image.network('http://10.0.2.2/backend_furaha/assets/${product.image}',
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
                             ),
               ),

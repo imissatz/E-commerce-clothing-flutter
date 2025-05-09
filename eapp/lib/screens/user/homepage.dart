@@ -90,12 +90,15 @@ class _HomePageState extends State<HomePage> {
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: _StickyHeaderDelegate(
-                    child: const Column(
+                    child: Column(
                       children: [
                         // Categories
                         SizedBox(
                           height: 30.0,
-                          child: Categories(),
+                          child: Container(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              color: const Color.fromARGB(255, 84, 78, 78),
+                              child: const Categories()),
                         ),
                       ],
                     ),
