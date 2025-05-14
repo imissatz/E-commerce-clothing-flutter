@@ -44,10 +44,10 @@ class _HomePageState extends State<HomePage> {
           List<Product> products = snapshot.data!;
 
           return Scaffold(
-              backgroundColor: Colors.deepPurple[100],
+            backgroundColor: Colors.grey[50],
               body: CustomScrollView(slivers: [
                 SliverAppBar(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: Colors.black87,
                   pinned: true,
                   expandedHeight: 180.0,
                   flexibleSpace: FlexibleSpaceBar(
@@ -90,17 +90,12 @@ class _HomePageState extends State<HomePage> {
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: _StickyHeaderDelegate(
-                    child: Column(
-                      children: [
-                        // Categories
-                        SizedBox(
-                          height: 30.0,
-                          child: Container(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              color: const Color.fromARGB(255, 84, 78, 78),
-                              child: const Categories()),
-                        ),
-                      ],
+                    child: SizedBox(
+                      height: 40.0,
+                      child: Container(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          color: Colors.grey[50],
+                          child: const Categories()),
                     ),
                   ),
                 ),
@@ -124,8 +119,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ]),
               floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.deepPurple,
-                child: const Icon(Icons.shopping_cart),
+                backgroundColor: Colors.black87,
+                child: const Icon(Icons.shopping_cart, color: Colors.white70,),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Cart()));
@@ -147,10 +142,10 @@ class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 30.0;
+  double get maxExtent => 40.0;
 
   @override
-  double get minExtent => 30.0;
+  double get minExtent => 40.0;
 
   @override
   bool shouldRebuild(_StickyHeaderDelegate oldDelegate) {

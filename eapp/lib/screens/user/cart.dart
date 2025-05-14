@@ -12,7 +12,7 @@ class Cart extends StatelessWidget {
     final cart = Provider.of<CartProvider>(context);
     final items = cart.items;
 
-    final formattedPrice = NumberFormat('#,###').format(cart.totalPrice);
+    final totalPrice = NumberFormat('#,###').format(cart.totalPrice);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,6 +28,9 @@ class Cart extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               itemBuilder: (context, index) {
                 final product = items[index];
+                final formattedPrice =
+                    NumberFormat('#,###').format(product.price);
+
                 return Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Card(
@@ -42,7 +45,7 @@ class Cart extends StatelessWidget {
                                 size: 50.0, color: Colors.deepPurple),
                             title: Text(product.name ?? 'Unknown Product',
                                 style: const TextStyle(fontSize: 20.0)),
-                            subtitle: Text('TZS ${product.price}',
+                            subtitle: Text('TZS $formattedPrice',
                                 style: const TextStyle(fontSize: 15.0)),
                             trailing: IconButton(
                               icon: const Icon(Icons.delete),
@@ -68,7 +71,7 @@ class Cart extends StatelessWidget {
                   'Total Price',
                   style: TextStyle(color: Colors.white, fontSize: 10.0),
                 ),
-                Text(formattedPrice,
+                Text(totalPrice,
                     style: const TextStyle(fontSize: 20.0, color: Colors.white))
               ],
             ),

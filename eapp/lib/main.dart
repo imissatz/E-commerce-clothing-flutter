@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import 'screens/user/splash_screen.dart';
 import 'screens/user/homepage.dart';
 import 'screens/user/product_details.dart';
+import 'screens/user/login.dart';
+import 'package:eapp/screens/user/register.dart';
 
 import 'screens/admin/dashboard.dart';
 import 'screens/admin/products.dart';
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashScreen(),
           '/home': (context) => const HomePage(),
+          '/register': (context) => const Register(),
+          '/login': (context) => const Login(),
           // '/cart': (context) =>  Cart(),
           '/admin/dashboard': (context) => const Dashboard(),
           '/admin/products': (context) => const Products(),
